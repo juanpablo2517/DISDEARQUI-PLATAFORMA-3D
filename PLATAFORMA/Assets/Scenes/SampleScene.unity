@@ -748,6 +748,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea73eb261e6ddc46a81f78f6bea5037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!114 &819130880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819130874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2e4e360367fb044961a0e4b8121621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  PlayerController: {fileID: 819130879}
+  rb: {fileID: 819130875}
+  velocity: 30
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +877,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa84a7b4bb5050e429c8b2c9b8e80573, type: 3}
       insertIndex: -1
       addedObject: {fileID: 819130878}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa84a7b4bb5050e429c8b2c9b8e80573, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 819130880}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa84a7b4bb5050e429c8b2c9b8e80573, type: 3}
       insertIndex: -1
       addedObject: {fileID: 819130879}

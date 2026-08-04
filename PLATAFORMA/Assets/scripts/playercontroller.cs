@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     InputAction moveAction;
     InputAction jumpAction;
 
+    public Vector2 moveValue {get; private set;}
+    private bool jumpValue;
+
      void Start()
     {
        
@@ -16,8 +19,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector2 moveValue = moveAction.ReadValue<Vector2>();
-        bool jumpValue = jumpAction.IsPressed();
+        moveValue = moveAction.ReadValue<Vector2>();
+        jumpValue = jumpAction.IsPressed();
 
         Debug.Log("me muevo:" + moveValue);
         Debug.Log("Salto:" + jumpValue);
