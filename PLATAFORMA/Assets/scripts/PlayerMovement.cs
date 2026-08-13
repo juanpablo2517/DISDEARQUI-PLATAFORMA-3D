@@ -4,19 +4,28 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
     [SerializeField] private Rigidbody rb;
-
     [SerializeField] private float velocity = 5f;
+    [SerializeField] private float jumpForce = 7f;
     private void FixedUpdate()
     {
         Move();
+        Jump();
     }
     private void Move()
     {
         rb.linearVelocity = new Vector3(
             playerController.MoveValue.x * velocity,
-            0f,
-            playerController.MoveValue.y * velocity);  //diraccion * velocidad 
+            rb.linearVelocity.y,
+            playerController.MoveValue.y * velocity);   
     }
-    //crear un nevo metodo que se encargue del movimiento del personaje
-    //llamar al rigidbody y moverlo con una velocidad lineal, la direccion es el moveValue, velocidad;
+   private void Jump()
+{
+    if (playerController.IsJump)
+    {
+        rb.linearVelocity = new Vector3(
+            rb.linearVelocity.x,
+            jumpForce,
+            rb.linearVelocity.z);
+    }
+}
 }

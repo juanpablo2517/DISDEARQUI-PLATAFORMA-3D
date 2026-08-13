@@ -14,6 +14,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MoveValue = moveAction.ReadValue<Vector2>();
-        IsJump = jumpAction.IsPressed();
+        IsJump = jumpAction.WasPressedThisFrame();
     }
 }
