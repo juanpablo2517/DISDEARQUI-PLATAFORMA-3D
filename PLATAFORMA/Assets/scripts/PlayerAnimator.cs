@@ -26,7 +26,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     if (playerController.IsJump)
     {
-        animator.SetTrigger(JumpParameter);
+        animator.Play("salto up");
     }
 }
 }
