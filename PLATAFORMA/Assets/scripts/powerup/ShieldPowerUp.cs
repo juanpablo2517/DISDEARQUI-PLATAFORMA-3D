@@ -1,6 +1,4 @@
 using UnityEngine;
-
-public class ShieldPowerUp : MonoBehaviour
 using System.Collections;
 
 public class ShieldPowerUp : MonoBehaviour

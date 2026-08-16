@@ -13,6 +13,13 @@ public class PlayerStats : MonoBehaviour
     [Header("Escudo")]
     public bool hasShield = false;
 
+    [Header("Veneno")]
+public bool isPoisoned = false;
+public int poisonDamage = 2;
+public float poisonInterval = 1f;
+
+private Coroutine poisonCoroutine;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -69,4 +76,32 @@ public class PlayerStats : MonoBehaviour
 
         Debug.Log("Daño normal");
     }
+    public void ApplyPoison(float duration)
+{
+    if (poisonCoroutine != null)
+    {
+        StopCoroutine(poisonCoroutine);
+    }
+
+    poisonCoroutine = StartCoroutine(PoisonRoutine(duration));
+}
+
+private IEnumerator PoisonRoutine(float duration)
+{
+    isPoisoned = true;
+
+    float timer = 0f;
+
+    while (timer < duration)
+    {
+        TakeDamage(poisonDamage);
+
+        yield return new WaitForSeconds(poisonInterval);
+
+        timer += poisonInterval;
+    }
+
+    isPoisoned = false;
+    poisonCoroutine = null;
+}
 }
