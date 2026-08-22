@@ -64,18 +64,7 @@ private Coroutine poisonCoroutine;
         Debug.Log("Escudo terminado");
     }
 
-    public IEnumerator IncreaseDamage(int extraDamage, float duration)
-    {
-        damage += extraDamage;
-
-        Debug.Log("Daño aumentado");
-
-        yield return new WaitForSeconds(duration);
-
-        damage -= extraDamage;
-
-        Debug.Log("Daño normal");
-    }
+   
     public void ApplyPoison(float duration)
 {
     if (poisonCoroutine != null)
