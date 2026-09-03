@@ -27,7 +27,8 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (playerController != null && animator != null && playerController.IsJumpPressed)
         {
-            animator.Play("salto up");
+            animator.SetBool(JumpParameter, playerController.IsJumpPressed);
+            Debug.Log("Salto");
         }
     }
 }

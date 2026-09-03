@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        rb.angularVelocity = Vector3.zero; // Evita que el Rigidbody rote debido a colisiones
         CheckGround();
         Move();
         Rotate();
