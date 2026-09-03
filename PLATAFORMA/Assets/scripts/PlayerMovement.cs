@@ -4,45 +4,34 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GroundCheck groundCheck; // Referencia al nuevo script de suelo
     [SerializeField] private float velocity = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float rotationSpeed = 10f;
 
-    [Header("Doble Salto & Suelo")]
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-
+    [Header("Doble Salto & Velocidad")]
     public bool canDoubleJump = false;
     private bool hasDoubleJumped = false;
-    private bool isGrounded;
     private float currentVelocityMultiplier = 1f;
 
     private void Start()
     {
         if (rb == null) rb = GetComponent<Rigidbody>();
+        if (groundCheck == null) groundCheck = GetComponentInChildren<GroundCheck>();
     }
 
     private void FixedUpdate()
     {
-        rb.angularVelocity = Vector3.zero; // Evita que el Rigidbody rote debido a colisiones
-        CheckGround();
+        rb.angularVelocity = Vector3.zero; // Evita que el Rigidbody rote por colisiones
+        CheckResetJump();
         Move();
         Rotate();
         Jump();
     }
 
-    private void CheckGround()
+    private void CheckResetJump()
     {
-        if (groundCheck != null)
-        {
-            isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-        }
-        else
-        {
-            isGrounded = Mathf.Abs(rb.linearVelocity.y) < 0.05f;
-        }
-
-        if (isGrounded)
+        if (groundCheck != null && groundCheck.IsGrounded)
         {
             hasDoubleJumped = false;
         }
@@ -77,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerController.IsJumpPressed)
         {
+            bool isGrounded = groundCheck != null ? groundCheck.IsGrounded : Mathf.Abs(rb.linearVelocity.y) < 0.05f;
+
             if (isGrounded)
             {
                 ExecuteJump();

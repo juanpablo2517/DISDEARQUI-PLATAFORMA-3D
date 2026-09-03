@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float checkRadius = 0.2f;
+
+    public bool IsGrounded { get; private set; }
+
+    private void Update()
     {
-        
+        IsGrounded = Physics.CheckSphere(transform.position, checkRadius, groundLayer);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDrawGizmosSelected()
     {
-        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, checkRadius);
     }
 }
