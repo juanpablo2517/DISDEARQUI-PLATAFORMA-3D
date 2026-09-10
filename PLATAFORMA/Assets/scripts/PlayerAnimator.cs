@@ -30,6 +30,12 @@ public class PlayerAnimator : MonoBehaviour
             animator.SetBool(JumpParameter, playerController.IsJumpPressed);
             Debug.Log("Salto");
         }
+
+        //si estoy tocando el suelo la animacion de salto es falsa
+        if (playerController != null && animator != null && playerController.IsJumpPressed == false)
+        {
+            animator.SetBool(JumpParameter, playerController.IsJumpPressed);
+        }
     }
 }
 

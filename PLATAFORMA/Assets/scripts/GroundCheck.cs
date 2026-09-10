@@ -5,7 +5,7 @@ public class GroundCheck : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float checkRadius = 0.2f;
 
-    public bool IsGrounded { get; private set; }
+    public bool IsGrounded;
 
     private void Update()
     {
